@@ -42,7 +42,7 @@ public class RabbitMqConfig {
 	@Bean
 	Binding exchangeQueueBinding() { 
 		
-	 return	BindingBuilder.bind(myQueue()).to(myExchange()).with("topic").noargs();
+	 return	BindingBuilder.bind(myQueue()).to(myExchange()).with("").noargs();
 	}
 	
 	

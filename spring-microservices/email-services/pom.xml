@@ -62,6 +62,9 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
+					<useConfigFile>true</useConfigFile>
+					<serverId>docker.io</serverId>
+					<pushImage>true</pushImage>
 				</configuration>
 				<!-- Binding build goal to maven's package phase -->
 				<executions>
