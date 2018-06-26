@@ -10,13 +10,19 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import com.email.service.listener.RabbitMQListener;
 
 @Configuration
 public class RabbitMqConfig {
+	
+	public final static String QUEUE_NAME = "user.queue";
+	@Autowired
+	Environment environment;
 
 	
 	/** 
@@ -25,13 +31,13 @@ public class RabbitMqConfig {
 	 * */
 	@Bean
 	Queue myQueue() {
-	 return	QueueBuilder.durable("SpringQueue").autoDelete().build();
+	 return	QueueBuilder.durable(QUEUE_NAME).autoDelete().build();
 	}
 
 	
 	@Bean
 	Exchange myExchange() {
-		return ExchangeBuilder.fanoutExchange("spring.fanout").autoDelete().durable(true).build();
+		return ExchangeBuilder.topicExchange("user-registrations").autoDelete().durable(true).build();
 	}
 	
 	/** 
@@ -42,13 +48,13 @@ public class RabbitMqConfig {
 	@Bean
 	Binding exchangeQueueBinding() { 
 		
-	 return	BindingBuilder.bind(myQueue()).to(myExchange()).with("").noargs();
+	 return	BindingBuilder.bind(myQueue()).to(myExchange()).with("SpringQueue").noargs();
 	}
 	
 	
 	@Bean
 	ConnectionFactory connectionFactory () { 
-		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("rabbitmq");
+		CachingConnectionFactory connectionFactory = new CachingConnectionFactory(environment.getProperty("spring.rabbitmq.host"));
 		connectionFactory.setUsername("guest");
 		connectionFactory.setPassword("guest");
 		return connectionFactory;
