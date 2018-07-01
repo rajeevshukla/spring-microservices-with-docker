@@ -8,36 +8,64 @@ import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
-import com.email.service.listener.RabbitMQListener;
+import com.email.service.listener.UserEventListener;
 
 @Configuration
 public class RabbitMqConfig {
-	
-	public final static String QUEUE_NAME = "user.queue";
+
+	public final static String USER_QUEUE_CREATED = "user.queue.created";
+	public final static String USER_QUEUE_UPDATED = "user.queue.updated";
+	public final static String USER_QUEUE_DELETED = "user.queue.deleted";
 	@Autowired
 	Environment environment;
 
-	
+
 	/** 
 	 * Creating queues using builder
 	 * 
 	 * */
 	@Bean
-	Queue myQueue() {
-	 return	QueueBuilder.durable(QUEUE_NAME).autoDelete().build();
+	Queue userCreateQueue() {
+		return	QueueBuilder.durable(USER_QUEUE_CREATED).autoDelete().build();
 	}
 
-	
+
+	/** 
+	 * Creating queues using builder
+	 * 
+	 * */
+	@Bean
+	Queue userUpdateQueue() {
+		return	QueueBuilder.durable(USER_QUEUE_UPDATED).autoDelete().build();
+	}
+
+	/** 
+	 * Creating queues using builder
+	 * 
+	 * */
+	@Bean
+	Queue userDeleteQueue() {
+		return	QueueBuilder.durable(USER_QUEUE_DELETED).autoDelete().build();
+	}
+
 	@Bean
 	Exchange myExchange() {
 		return ExchangeBuilder.topicExchange("user-registrations").autoDelete().durable(true).build();
+	}
+
+	/** 
+	 * 
+	 * Creating binding between queues and Exchange with routing key "topic" with no other parameters
+	 * 
+	 * */
+	@Bean
+	Binding exchangeCreateQueueBinding() { 
+		return	BindingBuilder.bind(userCreateQueue()).to(myExchange()).with("user.created").noargs();
 	}
 	
 	/** 
@@ -46,12 +74,20 @@ public class RabbitMqConfig {
 	 * 
 	 * */
 	@Bean
-	Binding exchangeQueueBinding() { 
-		
-	 return	BindingBuilder.bind(myQueue()).to(myExchange()).with("SpringQueue").noargs();
+	Binding exchangeUpdateQueueBinding() { 
+		return	BindingBuilder.bind(userUpdateQueue()).to(myExchange()).with("user.updated").noargs();
 	}
-	
-	
+	/** 
+	 * 
+	 * Creating binding between queues and Exchange with routing key "topic" with no other parameters
+	 * 
+	 * */
+	@Bean
+	Binding exchangeDeleteQueueBinding() { 
+		return	BindingBuilder.bind(userDeleteQueue()).to(myExchange()).with("user.deleted").noargs();
+	}
+
+
 	@Bean
 	ConnectionFactory connectionFactory () { 
 		CachingConnectionFactory connectionFactory = new CachingConnectionFactory(environment.getProperty("spring.rabbitmq.host"));
@@ -59,7 +95,7 @@ public class RabbitMqConfig {
 		connectionFactory.setPassword("guest");
 		return connectionFactory;
 	}
-
+	/*
 	@Bean
 	MessageListenerContainer messageListenerContainer() {
 
@@ -68,8 +104,15 @@ public class RabbitMqConfig {
 		//		container.setConcurrentConsumers(500);
 		container.setQueues(myQueue());
 //	container.setQueueNames("test.fanout.queue1","test.fanout.queue2","test.fanout.queue3");
-		container.setMessageListener(new RabbitMQListener());
+		//container.setMessageListener(new RabbitMQListener());
 		return container;
 	}
-	
+	 */	
+
+
+	@Bean
+	public UserEventListener userEventListener() { 
+		return new UserEventListener();
+	}
+
 }
