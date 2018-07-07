@@ -1,5 +1,7 @@
 package com.microservices.user.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,17 +11,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table( name= "USER_DETAILS")
-public class UserDetails {
+public class UserDetails implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1604951781966883778L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID")
 	private long userId;
 	@Column(name="USER_NAME", unique=true, nullable=false)
-	private String username;
+	private String userName;
 	@Column(name="FIRST_NAME")
 	private String FirstName;
-	@Column(name="FIRST_NAME")
+	@Column(name="LAST_NAME")
 	private String lastName;
 	@Column(name="EMAIL_ID", nullable=false)
 	private String email;
@@ -29,11 +36,11 @@ public class UserDetails {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getFirstName() {
 		return FirstName;
@@ -55,7 +62,7 @@ public class UserDetails {
 	}
 	@Override
 	public String toString() {
-		return "UserDetails [userId=" + userId + ", username=" + username + ", FirstName=" + FirstName + ", lastName="
+		return "UserDetails [userId=" + userId + ", username=" + userName + ", FirstName=" + FirstName + ", lastName="
 				+ lastName + ", email=" + email + "]";
 	}
 

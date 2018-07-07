@@ -31,7 +31,7 @@ public class RabbitMqConfig {
 	 * */
 	@Bean
 	Queue userCreateQueue() {
-		return	QueueBuilder.durable(USER_QUEUE_CREATED).autoDelete().build();
+		return	QueueBuilder.durable(USER_QUEUE_CREATED).build();
 	}
 
 
@@ -41,7 +41,7 @@ public class RabbitMqConfig {
 	 * */
 	@Bean
 	Queue userUpdateQueue() {
-		return	QueueBuilder.durable(USER_QUEUE_UPDATED).autoDelete().build();
+		return	QueueBuilder.durable(USER_QUEUE_UPDATED).build();
 	}
 
 	/** 
@@ -50,12 +50,12 @@ public class RabbitMqConfig {
 	 * */
 	@Bean
 	Queue userDeleteQueue() {
-		return	QueueBuilder.durable(USER_QUEUE_DELETED).autoDelete().build();
+		return	QueueBuilder.durable(USER_QUEUE_DELETED).build();
 	}
 
 	@Bean
 	Exchange myExchange() {
-		return ExchangeBuilder.topicExchange("user-registrations").autoDelete().durable(true).build();
+		return ExchangeBuilder.topicExchange("user-registrations").durable(true).build();
 	}
 
 	/** 

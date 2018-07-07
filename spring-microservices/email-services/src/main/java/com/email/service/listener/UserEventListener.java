@@ -13,21 +13,21 @@ public class UserEventListener {
 	
 	@RabbitListener(concurrency="3-5", queues="user.queue.created")
 	public void userCreateListener(String message) { 
-		System.out.println("User Created Event recieved ====");
+		System.out.println("User Created Event recieved ====" + message);
 		 userEmailSenderService.sendRegistrationEmail("User Created");	
 	}
 	
 	
 	@RabbitListener(concurrency="3-5", queues="user.queue.updated")
 	public void userUpdateListener(String message) { 
-		System.out.println("User Updated Event recieved ====");
+		System.out.println("User Updated Event recieved ===="+ message);
 		 userEmailSenderService.sendRegistrationEmail("User Updated");
 	}
 	
 
 	@RabbitListener(concurrency="3-5", queues="user.queue.deleted")
 	public void userDeleteListener(String message) { 
-		System.out.println("User Deleted Event recieved ====");
+		System.out.println("User Deleted Event recieved ===="+ message);
 		 userEmailSenderService.sendRegistrationEmail("User Deleted");
 	}
 	
