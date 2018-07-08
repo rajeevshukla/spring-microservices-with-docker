@@ -1,7 +1,5 @@
 package com.microservices.user.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table( name= "USER_DETAILS")
-public class UserDetails implements Serializable {
+public class UserDetails{
 	
 	/**
 	 * 

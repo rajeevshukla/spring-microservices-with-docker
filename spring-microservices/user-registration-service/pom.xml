@@ -68,7 +68,7 @@
 				<configuration>
 					<baseImage>java</baseImage>
 					<imageName>rajeevshukla/${project.artifactId}</imageName>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Dspring.profiles.active=prod"]</entryPoint>
 					<!-- copy the service's jar file from target into the root directory 
 						of the image -->
 					<!-- Location that contains docker file -->
