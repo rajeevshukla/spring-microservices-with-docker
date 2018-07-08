@@ -26,6 +26,9 @@ services:
   
   spring-boot-email:
       image: rajeevshukla/email-services
+      depends_on: 
+        - mysql
+        - rabbitmq
       ports: 
       - "8089:8089"
       links: 
@@ -38,6 +41,7 @@ services:
       image: rajeevshukla/user-registration-service
       depends_on: 
         - mysql
+        - rabbitmq
       ports: 
       - "8080:8080"
       
