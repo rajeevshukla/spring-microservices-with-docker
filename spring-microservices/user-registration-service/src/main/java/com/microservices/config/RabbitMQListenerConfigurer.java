@@ -18,7 +18,6 @@ public class RabbitMQListenerConfigurer  implements RabbitListenerConfigurer{
 	private  DefaultMessageHandlerMethodFactory jsonMessageHandlerMethodFactory() { 
 		DefaultMessageHandlerMethodFactory messageHandlerMethodFactory = new DefaultMessageHandlerMethodFactory();
 		messageHandlerMethodFactory.setMessageConverter(new MappingJackson2MessageConverter());
-
 		return messageHandlerMethodFactory;
 	}
 	
