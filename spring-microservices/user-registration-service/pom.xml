@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>user-registration-service</artifactId>
@@ -32,20 +33,31 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		   <!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) -->
+		<!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) -->
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 
-        <!-- Use MySQL Connector-J -->
+		<!-- Use MySQL Connector-J -->
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-client -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-client</artifactId>
+			<version>2.0.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -60,7 +72,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
@@ -68,7 +80,8 @@
 				<configuration>
 					<baseImage>java</baseImage>
 					<imageName>rajeevshukla/${project.artifactId}</imageName>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar", "-Dspring.profiles.active=prod"]</entryPoint>
+					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar",
+						"-Dspring.profiles.active=prod"]</entryPoint>
 					<!-- copy the service's jar file from target into the root directory 
 						of the image -->
 					<!-- Location that contains docker file -->
@@ -94,7 +107,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
