@@ -38,5 +38,6 @@
 		<module>email-services</module>
 		<module>user-registration-service</module>
 		<module>spring-cloud-config-server</module>
+		<module>netflix-eureka-naming-server</module>
 	</modules>
 </project>
