@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.user.model.UserDetails;
 import com.microservices.user.service.UserRegistrationService;
+import com.microservices.user.service.proxy.EmailServiceProxy;
 
 @RestController
 public class UserRegistrationController {
@@ -19,6 +20,9 @@ public class UserRegistrationController {
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 	
+	@Autowired
+	EmailServiceProxy emailServiceProxy;
+	
 	@PostMapping("registerUser.htm")
 	public String registerUser(@RequestBody UserDetails userDetails) { 
 			
@@ -26,7 +30,10 @@ public class UserRegistrationController {
 		
 		 rabbitTemplate.convertAndSend("user-registrations","user.created", userDetails);
 		 
-		return "sucess";
+		// calling rest service directly using ribbon. 
+		boolean status = emailServiceProxy.sendUserEmail(userDetails);
+		
+		return "sucess="+status;
 	}
 	
 	@GetMapping("registerUser.htm")
