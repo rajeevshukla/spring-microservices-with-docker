@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.microservices.user.model.UserDetails;
 
 @FeignClient(name="email-service",url="localhost:8089")
+//@RibbonClient()
 public interface EmailServiceProxy {
 
 	@PostMapping("sendUserRegEmail.htm")
