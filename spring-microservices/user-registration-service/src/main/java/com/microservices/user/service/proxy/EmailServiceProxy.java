@@ -20,11 +20,12 @@ public interface EmailServiceProxy {
  Use below code when you are using feign client with ribbon for load balancing. 
 */
 
-@FeignClient(name="email-service")
+@FeignClient(name="netflix-cloud-zuul-server") //adding api gateway server for routing request through api getway to email service 
 @RibbonClient(name="email-service")
 public interface EmailServiceProxy {
 
-	@PostMapping("sendUserRegEmail.htm")
+	//@PostMapping("sendUserRegEmail.htm")
+	@PostMapping("email-service/sendUserRegEmail.htm") //prepending service name (email-service) when talking though api gateway
 	public boolean sendUserEmail(@RequestBody String userJson);
 	
 	
