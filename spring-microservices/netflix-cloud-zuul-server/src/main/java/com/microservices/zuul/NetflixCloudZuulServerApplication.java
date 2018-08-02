@@ -12,9 +12,21 @@ public class NetflixCloudZuulServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NetflixCloudZuulServerApplication.class, args);
+		
+	}
+	
+	/*
+	@Bean
+	public Tracing tracing() { 
+		return Tracing.newBuilder().localServiceName("zuulServerProducer").build();
 	}
 	
 	
+	@Bean 
+	public SpringRabbitTracing springRabbitTracing() { 
+		return SpringRabbitTracing.newBuilder(tracing()).remoteServiceName("my-mq-service").build();
+	}
 	
+	*/
 
 }

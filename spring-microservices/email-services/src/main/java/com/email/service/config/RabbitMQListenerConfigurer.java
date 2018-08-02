@@ -16,8 +16,7 @@ public class RabbitMQListenerConfigurer implements RabbitListenerConfigurer {
 		System.out.println("=== Custom message converter registered === ");
 	}
 
-	@Bean
-	
+	@Bean(name="myCustomMessageHandlerFactory")
 	public DefaultMessageHandlerMethodFactory myCustomMessageHandlerFactory() { 
 		DefaultMessageHandlerMethodFactory defaultMessageHandlerMethodFactory = new DefaultMessageHandlerMethodFactory();
 		defaultMessageHandlerMethodFactory.setMessageConverter(new MappingJackson2MessageConverter());

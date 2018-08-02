@@ -4,6 +4,12 @@ spring:
   cloud:
     config: 
       uri: http://localhost:8888
+#  zipkin:
+#    enabled: true
+#    base-url: http://localhost:9411
+#    service:
+#      name: email-service
+#    
 eureka:
   client:
     serviceUrl:
@@ -15,4 +21,9 @@ eureka:
     #secure-port-enabled: false
     #non-secure-port-enabled: true
     #secure-port: ${server.port}
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*" #disabling security to enalbe actuator to call actuator/refresh url
