@@ -13,4 +13,8 @@ public class NetflixCloudZuulServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NetflixCloudZuulServerApplication.class, args);
 	}
+	
+	
+	
+
 }

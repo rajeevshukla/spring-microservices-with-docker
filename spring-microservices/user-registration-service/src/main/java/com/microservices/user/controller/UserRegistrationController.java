@@ -1,5 +1,7 @@
 package com.microservices.user.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,11 @@ import com.microservices.user.service.proxy.EmailServiceProxy;
 @RestController
 public class UserRegistrationController {
 
+	
+	
+	private static final Logger log = LoggerFactory.getLogger(UserRegistrationController.class);
+
+	
 	@Autowired
 	UserRegistrationService registrationService;
 
@@ -30,8 +37,7 @@ public class UserRegistrationController {
 		
 		 rabbitTemplate.convertAndSend("user-registrations","user.created", userDetails);
 		 
-		 return "success"
-;
+		 return "success";
 	}
 	
 	@GetMapping("registerUser.htm")
@@ -45,7 +51,8 @@ public class UserRegistrationController {
 	}
 	
 	@GetMapping("executeFeignClient.htm")
-	public String executeFeignClient() { 
+	public String executeFeignClient() {
+		log.info("Executing Feign client");
 		emailServiceProxy.sendUserEmail("executingFeignClient");
 		return "success";
 	}

@@ -17,6 +17,7 @@ public class ZuulLogginFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {
+	
 		
 		return true;
 	}
