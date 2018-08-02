@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microservices.user.model.UserDetails;
 import com.microservices.user.service.UserRegistrationService;
+import com.microservices.user.service.proxy.EmailServiceProxy;
 
 @RestController
 public class UserRegistrationController {
@@ -19,8 +20,8 @@ public class UserRegistrationController {
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 	
-//	@Autowired
-//	EmailServiceProxy emailServiceProxy = new email;
+	@Autowired
+	EmailServiceProxy emailServiceProxy;
 	
 	@PostMapping("registerUser.htm")
 	public String registerUser(@RequestBody UserDetails userDetails) { 
@@ -45,7 +46,7 @@ public class UserRegistrationController {
 	
 	@GetMapping("executeFeignClient.htm")
 	public String executeFeignClient() { 
-//		emailServiceProxy.sendUserEmail("executingFeignClient");
+		emailServiceProxy.sendUserEmail("executingFeignClient");
 		return "success";
 	}
 	
