@@ -34,7 +34,7 @@ public class UserRegistrationController {
 	public String registerUser(@RequestBody UserDetails userDetails) { 
 			
 		 registrationService.saveUserDetail(userDetails);
-		
+		 		
 		 rabbitTemplate.convertAndSend("user-registrations","user.created", userDetails);
 		 
 		 return "success";
