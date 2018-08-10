@@ -100,7 +100,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+<!-- 
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
@@ -110,10 +110,10 @@
 					<imageName>rajeevshukla/${project.artifactId}</imageName>
 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar",
 						"-Dspring.profiles.active=prod"]</entryPoint>
-					<!-- copy the service's jar file from target into the root directory 
-						of the image -->
-					<!-- Location that contains docker file -->
-					<!-- <dockerDirectory>${project.build.directory}</dockerDirectory> -->
+					copy the service's jar file from target into the root directory 
+						of the image
+					Location that contains docker file
+					<dockerDirectory>${project.build.directory}</dockerDirectory>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -125,7 +125,7 @@
 					<serverId>docker.io</serverId>
 					<pushImage>false</pushImage>
 				</configuration>
-				<!-- Binding build goal to maven's package phase -->
+				Binding build goal to maven's package phase
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -134,7 +134,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 </project>
