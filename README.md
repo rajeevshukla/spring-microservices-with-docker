@@ -7,4 +7,7 @@
  - Netflix Zuul <br>
  - Spring Sleuth<br>
  - Spring Boot 2.0 <br>
+ - Rabbit MQ
+ - MySQL 
+ - Spring Data JPA 
  
