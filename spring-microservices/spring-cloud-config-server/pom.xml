@@ -13,7 +13,6 @@
 		<groupId>com.springmicroservices</groupId>
 		<artifactId>spring-microservices</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
