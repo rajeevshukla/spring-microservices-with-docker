@@ -20,6 +20,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
+		<!-- Skipping maven test -->
+		<maven.test.skip>true</maven.test.skip>
+		<!-- Skipping docker push images by default. Incase you want to push it use -Ddocker.skip.push=false during command line -->
+		<docker.skip.push>true</docker.skip.push>
 	</properties>
 
 

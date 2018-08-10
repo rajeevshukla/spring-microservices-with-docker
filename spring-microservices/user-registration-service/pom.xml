@@ -137,6 +137,38 @@
 					</execution>
 				</executions>
 			</plugin> -->
+			
+			
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.20.0</version>
+				<configuration>
+					<!-- Make sure the current user who is running mvn command has execute 
+						permission on docker.sock file -->
+					<dockerHost>unix:///var/run/docker.sock</dockerHost>
+					<!--<dockerHost>tcp://REMOTE_IP:2375</dockerHost> -->
+					<images>
+						<image>
+							<name>rajeevshukla/${project.artifactId}:1.0</name>
+							<alias>${project.artifactId}</alias>
+							<build>
+								<dockerFileDir>${project.basedir}</dockerFileDir>
+							</build>
+						</image>
+					</images>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 

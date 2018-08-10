@@ -23,12 +23,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
@@ -55,24 +55,15 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
 		</dependency>
-<!-- 
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
-		</dependency>
-		
-			
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
-		</dependency>
- -->
+		<!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-sleuth-zipkin</artifactId> 
+			</dependency> <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-bus-amqp</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -100,41 +91,65 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!-- 
+
 			<plugin>
-				<groupId>com.spotify</groupId>
+				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.10</version>
+				<version>0.20.0</version>
 				<configuration>
-					<baseImage>java</baseImage>
-					<imageName>rajeevshukla/${project.artifactId}</imageName>
-					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar",
-						"-Dspring.profiles.active=prod"]</entryPoint>
-					copy the service's jar file from target into the root directory 
-						of the image
-					Location that contains docker file
-					<dockerDirectory>${project.build.directory}</dockerDirectory>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-					<useConfigFile>true</useConfigFile>
-					<serverId>docker.io</serverId>
-					<pushImage>false</pushImage>
+				<!-- Make sure the current user who is running mvn command has execute permission on docker.sock file -->
+					<dockerHost>unix:///var/run/docker.sock</dockerHost>
+					<!--<dockerHost>tcp://REMOTE_IP:2375</dockerHost> -->
+					<images>
+						<image>
+							<!-- <name>${project.build.finalName}:${project.version}</name>
+							<alias>${project.build.finalName}</alias> -->
+							
+							<name>rajeevshukla/${project.artifactId}:1.0</name>
+							<alias>${project.artifactId}</alias>
+							<build>
+								<dockerFileDir>${project.basedir}</dockerFileDir>
+
+							</build>
+							<!-- <run>
+								<namingStrategy>alias</namingStrategy>
+								<dependsOn>
+									<container>rabbitmq</container>
+								</dependsOn>
+
+								<links>
+									<link>rabbitmq</link>
+								</links>
+								<ports>
+									<port>9876:8080</port>
+								</ports>
+								<log>
+									<prefix>TC</prefix>
+									<date>default</date>
+									<color>cyan</color>
+								</log>
+							</run> -->
+
+						</image>
+					</images>
 				</configuration>
-				Binding build goal to maven's package phase
+
 				<executions>
 					<execution>
+						<id>start</id>
 						<phase>package</phase>
 						<goals>
 							<goal>build</goal>
+							<goal>push</goal>
 						</goals>
 					</execution>
+					<!-- Uncommment this execution phase if you wan to remove container 
+						after testing  <execution> <id>clean image</id> <phase>post-integration-test</phase> 
+						<goals> <goal>stop</goal> </goals> </execution> -->
 				</executions>
-			</plugin> -->
+			</plugin>
+
+
 		</plugins>
 	</build>
 </project>
