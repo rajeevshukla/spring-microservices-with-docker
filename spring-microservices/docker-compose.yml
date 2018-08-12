@@ -47,7 +47,7 @@ services:
       depends_on: 
        - mysql
        - rabbitmq
-       - netflix-eureka-naming-server 
+       - spring-cloud-config-server  
        - netflix-eureka-naming-server
       ports: 
       - "8080:8080"
