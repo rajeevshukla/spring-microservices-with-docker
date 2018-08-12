@@ -10,20 +10,3 @@ spring:
 #    service:
 #      name: email-service
 #    
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: https://localhost:8761/eureka/
-  instance:
-    instance-id: ${spring.application.name}:${random.int[5000,6000]}
-    prefer-ip-address: true
-    #hostname: localhost #ipaddress of this host 
-    #secure-port-enabled: false
-    #non-secure-port-enabled: true
-    #secure-port: ${server.port}
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-        - "*" #disabling security to enalbe actuator to call actuator/refresh url
