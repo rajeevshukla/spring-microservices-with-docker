@@ -74,8 +74,10 @@ services:
         image: rajeevshukla/netflix-cloud-zuul-server
         ports:
          - "8889:8889"
+        depends: 
+        - netflix-eureka-naming-server 
         links:
-         - netflix_eureka_naming_server
+         - netflix-eureka-naming-server
         environment:
          - "SPRING_PROFILES_ACTIVE=prod"
    
