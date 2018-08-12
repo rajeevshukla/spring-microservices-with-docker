@@ -11,7 +11,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>email-services</artifactId>
+	<artifactId>email-service</artifactId>
 	<packaging>jar</packaging>
 
 	<name>email-services</name>

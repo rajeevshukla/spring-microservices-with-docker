@@ -48,7 +48,7 @@ services:
        - mysql
        - rabbitmq
        - spring_cloud_config_server 
-       - netflix_eureka_naming_server
+       - netflix-eureka-naming-server
       ports: 
       - "8080:8080"
       links: 
