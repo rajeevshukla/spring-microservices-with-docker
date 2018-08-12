@@ -27,15 +27,15 @@ services:
   spring-boot-email:
       image: rajeevshukla/email-services
       depends_on: 
-        - rabbitmq
-        - spring_cloud_config_server 
-        - netflix_eureka_naming_server
+       - rabbitmq
+       - spring-cloud-config-server 
+       - netflix-eureka-naming-server
       ports: 
       - "8089:8089"
       links: 
-       - rabbitmq 
-       - spring_cloud_config_server 
-       - netflix_eureka_naming_server
+       - rabbitmq
+       - spring-cloud-config-server 
+       - netflix-eureka-naming-server
       deploy: 
         mode: replicated
         replicas: 2
@@ -45,15 +45,17 @@ services:
   spring-boot-user-registration:
       image: rajeevshukla/user-registration-service
       depends_on: 
-        - mysql
-        - rabbitmq
+       - mysql
+       - rabbitmq
+       - spring_cloud_config_server 
+       - netflix_eureka_naming_server
       ports: 
       - "8080:8080"
       links: 
        - mysql
        - rabbitmq
-       - spring_cloud_config_server 
-       - netflix_eureka_naming_server
+       - spring-cloud-config-server 
+       - netflix-eureka-naming-server
       deploy: 
         mode: replicated
         replicas: 2
@@ -64,16 +66,14 @@ services:
         image: rajeevshukla/spring-cloud-config-server
         container_name: spring_cloud_config_server
         ports: 
-          - ""
-        links: 
-          - netflix_eureka_naming_server
+          - "8888:8888"
         environment:
           - "SPRING_PROFILES_ACTIVE=prod"
   
   netflix-cloud-zuul-server:
         image: rajeevshukla/netflix-cloud-zuul-server
         ports:
-         - ""
+         - "8889:8889"
         links:
          - netflix_eureka_naming_server
         environment:
@@ -83,9 +83,7 @@ services:
         image: rajeevshukla/netflix-eureka-naming-server
         container_name: netflix_eureka_naming_server
         ports:
-         - ""
-        links:
-         - 
+         - "8761:8761"
         environment:
          - "SPRING_PROFILES_ACTIVE=prod"
          
