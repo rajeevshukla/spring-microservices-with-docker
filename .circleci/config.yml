@@ -30,7 +30,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: mvn dependency:go-offline pom.xml
+      - run: mvn dependency:go-offline pom.xml clean package
 
       - save_cache:
           paths:
@@ -38,5 +38,5 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
       # run tests!
-      - run: mvn clean package pom.xml
+     # mvn clean package pom.xml  - run (:) mvn clean package integration-test 
 
