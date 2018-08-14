@@ -105,7 +105,7 @@
 							<!-- <name>${project.build.finalName}:${project.version}</name>
 							<alias>${project.build.finalName}</alias> -->
 							
-							<name>rajeevshukla/${project.artifactId}:1.0</name>
+							<name>rajeevshukla/${project.artifactId}:latest</name>
 							<alias>${project.artifactId}</alias>
 							<build>
 								<dockerFileDir>${project.basedir}</dockerFileDir>

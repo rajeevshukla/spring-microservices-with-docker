@@ -150,7 +150,7 @@
 					<!--<dockerHost>tcp://REMOTE_IP:2375</dockerHost> -->
 					<images>
 						<image>
-							<name>rajeevshukla/${project.artifactId}:1.0</name>
+							<name>rajeevshukla/${project.artifactId}:latest</name>
 							<alias>${project.artifactId}</alias>
 							<build>
 								<dockerFileDir>${project.basedir}</dockerFileDir>

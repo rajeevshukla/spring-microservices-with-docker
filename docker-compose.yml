@@ -25,7 +25,7 @@ services:
     
   
   spring-boot-email:
-      image: rajeevshukla/email-services
+      image: rajeevshukla/email-service
       depends_on: 
        - rabbitmq
        - spring-cloud-config-server 
