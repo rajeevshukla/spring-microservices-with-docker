@@ -10,5 +10,7 @@ public class SpringCloudConfigServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCloudConfigServerApplication.class, args);
+		
+		System.out.println("============== Cloud Config Server is UP ========== ");
 	}
 }
