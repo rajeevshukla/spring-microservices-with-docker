@@ -54,7 +54,7 @@ services:
       #deploy: 
        # mode: replicated
         #replicas: 2
-      command: ["./wait-for-it.sh"," spring_cloud_config_server:8888", " rabbitmq:15672"]
+      command: ["./wait-for-it.sh"," spring_cloud_config_server:8888",]
       environment:
        - "SPRING_PROFILES_ACTIVE=prod"
   
@@ -75,7 +75,7 @@ services:
    #   deploy: 
     #    mode: replicated
      #   replicas: 2
-      command: ["./wait-for-it.sh"," spring_cloud_config_server:8888","--","./wait-for-it.sh", " rabbitmq:15672","--", "./wait-for-it.sh", " netflix_eureka_naming_server:8761"]
+      command: ["./wait-for-it.sh"," spring_cloud_config_server:8888"," && ","./wait-for-it.sh", " rabbitmq:15672","&&", "./wait-for-it.sh", " netflix_eureka_naming_server:8761"]
       environment:
        - "SPRING_PROFILES_ACTIVE=prod"
        
