@@ -16,7 +16,7 @@ services:
          - rabbitmq
         links: 
          - rabbitmq 
-        command: ["./wait-for-it.sh","rabbitmq:15672" ,"--","java","-jar","spring-cloud-config-server-0.0.1-SNAPSHOT.jar"]
+        command: ["./wait-for-it.sh","rabbitmq:15672","--", "./wait-for-it.sh","google.com:80" ,"--","java","-jar","spring-cloud-config-server-0.0.1-SNAPSHOT.jar"]
         ports: 
           - "8888:8888"
         environment:

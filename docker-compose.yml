@@ -4,7 +4,7 @@ services:
  
  spring-cloud-config-server: 
         image: rajeevshukla/spring-cloud-config-server
-        container_name: spring_cloud_config_server
+        container_name: spring-cloud-config-server
         ports: 
           - "8888:8888"
         environment:
@@ -12,7 +12,7 @@ services:
  
  netflix-eureka-naming-server:
         image: rajeevshukla/netflix-eureka-naming-server
-        container_name: netflix_eureka_naming_server
+        container_name: netflix-eureka-naming-server
         ports:
          - "8761:8761"
         environment:
@@ -54,7 +54,7 @@ services:
       #deploy: 
        # mode: replicated
         #replicas: 2
-      command: ["./wait-for-it.sh"," spring-cloud-config-server:8888", "--", "java","-jar","email-service-0.0.1-SNAPSHOT.jar" ]
+      command: ["./wait-for-it.sh"," spring-cloud-config-server:8888","--", "./wait-for-it.sh", "rabbitmq:15672","--","./wait-for-it.sh", "netflix-eureka-naming-server:8761","--", "java","-jar","email-service-0.0.1-SNAPSHOT.jar" ]
       environment:
        - "SPRING_PROFILES_ACTIVE=prod"
   
@@ -75,7 +75,7 @@ services:
    #   deploy: 
     #    mode: replicated
      #   replicas: 2
-      command: ["./wait-for-it.sh"," spring-cloud-config-server:8888","&&","./wait-for-it.sh", "rabbitmq:15672","&&", "./wait-for-it.sh", "mysql:3306","./wait-for-it.sh", "netflix-eureka-naming-server:8761", "--","java", "-jar", "user-registration-service-0.0.1-SNAPSHOT.jar"]
+      command: ["./wait-for-it.sh","spring-cloud-config-server:8888","--","./wait-for-it.sh", "rabbitmq:15672","--", "./wait-for-it.sh", "mysql:3306","--","./wait-for-it.sh", "netflix-eureka-naming-server:8761", "--","java", "-jar", "user-registration-service-0.0.1-SNAPSHOT.jar"]
       environment:
        - "SPRING_PROFILES_ACTIVE=prod"
        
