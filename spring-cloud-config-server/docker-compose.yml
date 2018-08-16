@@ -1,0 +1,24 @@
+version: "3.3"
+
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes: 
+    - /root/rabbitmq_data:/var/lib/rabbitmq
+
+  spring-cloud-config-server: 
+        image: rajeevshukla/spring-cloud-config-server
+        container_name: spring_cloud_config_server
+        depends_on: 
+         - rabbitmq
+        links: 
+         - rabbitmq 
+        command: ["./wait-for-it.sh","rabbitmq:15672" ,"--","java","-jar","spring-cloud-config-server-0.0.1-SNAPSHOT.jar"]
+        ports: 
+          - "8888:8888"
+        environment:
+          - "SPRING_PROFILES_ACTIVE=prod"
+ 

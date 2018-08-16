@@ -4,4 +4,4 @@ COPY  wait-for-it.sh /usr/source/
 WORKDIR /usr/source/
 RUN apk add --no-cache bash
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "user-registration-service-0.0.1-SNAPSHOT.jar"]
+#ENTRYPOINT ["java", "-jar", "user-registration-service-0.0.1-SNAPSHOT.jar"]
