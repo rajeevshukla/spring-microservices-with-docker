@@ -3,13 +3,19 @@ spring:
    name: netflix-cloud-zuul-server
 server:
   port: 8889
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
 eureka:
   client:
     serviceUrl:
      defaultZone: http://netflix-eureka-naming-server:8761/eureka/
-    instance:
-     instanceId: ${spring.application.name}:${random.int[5000,6000]}
+  instance:
+     instance-id: ${spring.application.name}:${random.int[5000,6000]}
      preferIpAddress: true
+     prefer-ip-address: true
 
 
 # with this you can call any user-registration service URL with just passing localhost:8889/users/whetever you have on user-registration controller. 
