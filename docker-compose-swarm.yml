@@ -24,7 +24,7 @@ services:
       - "15672:15672"
       - "5672:5672"
     volumes: 
-    - /root/rabbitmq_data:/var/lib/rabbitmq
+    - /root:/var/lib/rabbitmq
  mysql:
     image: mysql:5.6
     ports:
@@ -37,7 +37,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
     volumes: 
-    - /root/mysql_data:/var/lib/mysql
+    - /root:/var/lib/mysql
     
  spring-boot-email:
       image: rajeevshukla/email-service
@@ -76,7 +76,7 @@ services:
          mode: replicated
          replicas: 2
          restart_policy: 
-          condition: on_failure
+          condition: on-failure
       command: ["./wait-for-it.sh","spring-cloud-config-server:8888","--","./wait-for-it.sh", "rabbitmq:15672","--", "./wait-for-it.sh", "mysql:3306","--","./wait-for-it.sh", "netflix-eureka-naming-server:8761", "--","java", "-jar", "user-registration-service-0.0.1-SNAPSHOT.jar"]
       environment:
        - "SPRING_PROFILES_ACTIVE=prod"

@@ -8,7 +8,7 @@ services:
       - "5672:5672"
     volumes: 
     - /root/rabbitmq_data:/var/lib/rabbitmq
-
+   
   spring-cloud-config-server: 
         image: rajeevshukla/spring-cloud-config-server
         container_name: spring_cloud_config_server
@@ -21,4 +21,10 @@ services:
           - "8888:8888"
         environment:
           - "SPRING_PROFILES_ACTIVE=prod"
+networks:  
+  backend: 
+   driver: bridge
+  frontend: 
+   driver: bridge
+
  
