@@ -1,4 +1,4 @@
-# RabbitMQ Clustering with Consul 
+# RabbitMQ Clustering with Consul in docker swarm mode
 
 ### Useful Links 
 
