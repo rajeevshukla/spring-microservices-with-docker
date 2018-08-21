@@ -14,6 +14,6 @@ For older versions you need to use [rabbitmq-autclluster](https://github.com/rab
 
 All the available plugins can be find under `usr/lib/rabbitmq/lib/rabbitmq_server-${RABBITMQ_VERSION}/plugins`path inside the docker container. 
 
-You can get inside docker running container by using below commands
+You can get inside docker running container by using command:
 `docker exec -it <containerId> /bin/bash`
 
