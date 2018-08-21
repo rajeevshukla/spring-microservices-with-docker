@@ -17,3 +17,4 @@ All the available plugins can be find under `usr/lib/rabbitmq/lib/rabbitmq_serve
 You can get inside docker running container by using command:
 `docker exec -it <containerId> /bin/bash`
 
+To enable cosul discovery use: `rabbitmq-plugins enable --offline rabbitmq_peer_discovery_consul` 
