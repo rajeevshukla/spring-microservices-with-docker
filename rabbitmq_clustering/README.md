@@ -6,6 +6,7 @@
 + [Cluster formation and peer discovery](https://www.rabbitmq.com/cluster-formation.html)
 + [Peer discovery using consul](https://www.rabbitmq.com/cluster-formation.html#peer-discovery-consul)
 + [Rabbitmq Configuration](http://www.rabbitmq.com/configure.html)
++ [Rabbitmq environment variables](https://www.rabbitmq.com/configure.html#define-environment-variables)
 
 
 
