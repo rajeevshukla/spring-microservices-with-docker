@@ -10,4 +10,5 @@
  - Rabbit MQ
  - MySQL 
  - Spring Data JPA 
+ - Zipkin
  
