@@ -50,7 +50,7 @@ Then run below command to start rabbitmq server :<br>
   rajeevshukla/rabbitmq`
   
   
-  Now if you want to spawn up few more rabbit mq containers run below command 
+  Now if you want to spawn up few more rabbit mq containers run below command <br>
   `docker service update rabbit --replicas 3`
   
-  and the login http:<host-ip>:15672  using guest/guest. 
+  and the login http:host-ip:15672  using guest/guest. 
