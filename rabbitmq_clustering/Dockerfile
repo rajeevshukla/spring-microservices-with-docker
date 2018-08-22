@@ -1,8 +1,4 @@
 FROM rabbitmq:management
-ADD plugins/autocluster-0.7.0.ez \
-/usr/lib/rabbitmq/lib/rabbitmq_server-$RABBITMQ_VERSION/plugins/
-ADD plugins/autocluster_aws-0.0.1.ez \
-/usr/lib/rabbitmq/lib/rabbitmq_server-$RABBITMQ_VERSION/plugins/
-ADD plugins/rabbitmq_aws-0.7.0.ez \
-/usr/lib/rabbitmq/lib/rabbitmq_server-$RABBITMQ_VERSION/plugins/
-RUN rabbitmq-plugins enable --offline autocluster
+COPY rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
+#ENV RABBITMQ_CONFIG_FILE=/usr/source/rabbitmq.conf
+RUN rabbitmq-plugins enable --offline rabbitmq_peer_discovery_consul

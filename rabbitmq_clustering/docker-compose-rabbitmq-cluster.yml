@@ -1,0 +1,32 @@
+version: "3.3"
+services: 
+  rabbitmq-cluster:
+    image: rajeevshukla/rabbitmq:consulcluster
+    hostname: rabbitmq
+    ports: 
+      - "15672:15672"
+      - "5672:5672"
+      - "25672:25672"
+      - "15671:15671"
+      - "4369:4369"
+      - "5671:5671"
+    depends_on: 
+    - consul
+    environment: 
+      - "RABBITMQ_ERLANG_COOKIE=secret" 
+      - "AUTOCLUSTER_TYPE=consul"
+      - "CONSUL_HOST=consul"
+      - "CONSUL_PORT=8500"
+      - "CONSUL_SVC=rabbitmq"
+      - "CONSUL_SVC_ADDR_AUTO=true"
+      - "AUTOCLUSTER_CLEANUP=true"
+      - "CLEANUP_WARN_ONLY=false"
+  
+  consul: 
+    image: consul
+    ports:
+    - "8400:8400"
+    - "8500:8500"
+    - "8600:53" #DNS port
+    hostname: "consul" 
+
