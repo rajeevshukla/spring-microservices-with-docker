@@ -1,6 +1,14 @@
 spring:
   application: 
    name: netflix-cloud-zuul-server
+  zipkin:
+    enabled: true
+    base-url: http://zipkin:9411
+    service:
+      name: ${spring.application.name} 
+  sleuth:
+    sampler:
+      probability: 1
 server:
   port: 8889
   cloud:
@@ -8,6 +16,7 @@ server:
       ignoredInterfaces:
         - docker0
         - veth.*
+  
 eureka:
   client:
     serviceUrl:
@@ -16,6 +25,8 @@ eureka:
      instance-id: ${spring.application.name}:${random.int[5000,6000]}
      preferIpAddress: true
      prefer-ip-address: true
+ 
+ 
 
 
 # with this you can call any user-registration service URL with just passing localhost:8889/users/whetever you have on user-registration controller. 

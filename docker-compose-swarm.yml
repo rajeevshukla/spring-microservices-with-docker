@@ -1,10 +1,8 @@
 version: "3.3"
 
 services:
- 
  spring-cloud-config-server: 
         image: rajeevshukla/spring-cloud-config-server
-        container_name: spring-cloud-config-server
         ports: 
           - "8888:8888"
         environment:
@@ -12,7 +10,6 @@ services:
  
  netflix-eureka-naming-server:
         image: rajeevshukla/netflix-eureka-naming-server
-        container_name: netflix-eureka-naming-server
         ports:
          - "8761:8761"
         environment:
@@ -45,12 +42,14 @@ services:
        - rabbitmq
        - spring-cloud-config-server 
        - netflix-eureka-naming-server
+       - zipkin
       ports: 
       - "8089:8089"
       links: 
        - rabbitmq
        - spring-cloud-config-server 
        - netflix-eureka-naming-server
+       - zipkin
       #deploy: 
        # mode: replicated
         #replicas: 2
@@ -65,6 +64,7 @@ services:
        - rabbitmq
        - spring-cloud-config-server  
        - netflix-eureka-naming-server
+       - zipkin
       ports: 
       - "8080:8080"
       links: 
@@ -72,6 +72,7 @@ services:
        - rabbitmq
        - spring-cloud-config-server 
        - netflix-eureka-naming-server
+       - zipkin
       deploy: 
          mode: replicated
          replicas: 2
@@ -87,9 +88,14 @@ services:
          - "8889:8889"
         depends_on: 
         - netflix-eureka-naming-server
+        - zipkin
         links:
          - netflix-eureka-naming-server
+         - zipkin
         command: ["./wait-for-it.sh", "netflix-eureka-naming-server:8761", "--","java", "-jar", "netflix-cloud-zuul-server-0.0.1-SNAPSHOT.jar"] 
         environment:
          - "SPRING_PROFILES_ACTIVE=prod"
-  
+ zipkin: 
+       image: openzipkin/zipkin
+       ports:
+       - "9411:9411"

@@ -9,7 +9,9 @@ spring:
     #non-secure-port-enabled: true
     #secure-port: ${server.port}
 
-
+  zipkin:
+    enabled: true
+    base-url: http://localhost:9411
 
 #spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
 

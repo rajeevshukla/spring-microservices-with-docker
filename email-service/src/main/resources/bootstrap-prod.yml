@@ -10,6 +10,8 @@ spring:
         multiplier: 2  
         max-attempts: 20
     
+
+    
 #  zipkin:
 #    enabled: true
 #    base-url: http://localhost:9411
