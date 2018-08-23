@@ -61,7 +61,7 @@
 				<configuration>
 					<!-- Make sure the current user who is running mvn command has execute 
 						permission on docker.sock file -->
-					<dockerHost>unix:///var/run/docker.sock</dockerHost>
+					<dockerHost>${docker.host}</dockerHost>
 					<!--<dockerHost>tcp://REMOTE_IP:2375</dockerHost> -->
 					<images>
 						<image>

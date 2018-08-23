@@ -24,18 +24,18 @@
 		<maven.test.skip>true</maven.test.skip>
 		<!-- Skipping docker push images by default. Incase you want to push it use -Ddocker.skip.push=false during command line -->
 		<docker.skip.push>true</docker.skip.push>
+		<docker.host>unix:///var/run/docker.sock</docker.host>
 	</properties>
 
 
 	<build>
-		<pluginManagement>
+		
 			<plugins>
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
 			</plugins>
-		</pluginManagement>
 	</build>
 	<dependencyManagement>
 		<dependencies>

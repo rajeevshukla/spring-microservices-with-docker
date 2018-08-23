@@ -32,11 +32,10 @@ jobs:
           - v1-dependencies-
       - run : |
             docker login -u $DOCKER_USER -p $DOCKER_PASS 
+            docker --version
 
-      - run: mvn dependency:go-offline clean package 
-      - run: | 
-         docker --version
-
+      - run: mvn dependency:go-offline clean package -Ddocker.host=${DOCKER_HOST}
+      
       - save_cache:
           paths:
             - ~/.m2
