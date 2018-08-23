@@ -34,7 +34,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKER_PASS 
             docker --version
 
-      - run: mvn dependency:go-offline clean package -Ddocker.host=${DOCKER_HOST}
+      - run: mvn dependency:go-offline clean package -Ddocker.host=${DOCKER_HOST} -Ddocker.skip.push=false
       
       - save_cache:
           paths:
