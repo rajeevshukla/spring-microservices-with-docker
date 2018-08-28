@@ -19,19 +19,10 @@
 
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-amqp</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 		<dependency>
@@ -83,14 +74,17 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-security</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20180130</version>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>
@@ -112,18 +106,11 @@
 					<images>
 						<image>
 							<!-- <name>${project.build.finalName}:${project.version}</name> <alias>${project.build.finalName}</alias> -->
-
 							<name>rajeevshukla/${project.artifactId}:latest</name>
 							<alias>${project.artifactId}</alias>
 							<build>
 								<dockerFileDir>${project.basedir}</dockerFileDir>
-
 							</build>
-							<!-- <run> <namingStrategy>alias</namingStrategy> <dependsOn> <container>rabbitmq</container> 
-								</dependsOn> <links> <link>rabbitmq</link> </links> <ports> <port>9876:8080</port> 
-								</ports> <log> <prefix>TC</prefix> <date>default</date> <color>cyan</color> 
-								</log> </run> -->
-
 						</image>
 					</images>
 				</configuration>
@@ -137,9 +124,6 @@
 							<goal>push</goal>
 						</goals>
 					</execution>
-					<!-- Uncommment this execution phase if you wan to remove container 
-						after testing <execution> <id>clean image</id> <phase>post-integration-test</phase> 
-						<goals> <goal>stop</goal> </goals> </execution> -->
 				</executions>
 			</plugin>
 
