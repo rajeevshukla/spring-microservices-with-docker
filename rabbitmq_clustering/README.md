@@ -55,4 +55,4 @@ Then run below command to start rabbitmq server :<br>
   
   and the login http:host-ip:15672  using guest/guest. 
   
-### Here the [tutorial link](https://developervisits.wordpress.com/2018/09/07/loading-1000-mock-datasets-in-java-8-for-working-with-java-8-stream/)  in case you want to learn step by step. 
+### Here the [tutorial link](https://developervisits.wordpress.com/2018/08/28/creating-dynamic-rabbitmq-cluster-with-consul-discovery-in-docker/)  in case you want to learn step by step. 
