@@ -17,3 +17,6 @@ This project is a demo project designed and developed using spring framework and
  - Spring Data JPA 
  - Zipkin
  
+# How to run this project on your machine ? 
+ Follow Below Steps to run it in docker environmetn using docker-swarm 
+ Check out this project using git clone #repo UrL 
