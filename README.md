@@ -6,14 +6,15 @@ This project is a demo project designed and developed using spring framework and
 # spring-microservices-with-docker
   Technologies used in this project : <br>
  - Spring Cloud <br>
- - Spring Fiegn<br>
- - Spring Ribbon<br>
+ - Spring Fiegn <br>
+ - Spring Ribbon <br>
  - Netflix Eureka<br>
+ - Circuit Breaker Pattern (Hystrix)<br>
  - Netflix Zuul <br>
  - Spring Sleuth<br>
  - Spring Boot 2.0 <br>
- - Rabbit MQ
- - MySQL 
+ - Rabbit MQ 3.2
+ - MySQL 5.6
  - Spring Data JPA 
  - Zipkin
  
