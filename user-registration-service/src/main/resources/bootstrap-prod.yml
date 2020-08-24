@@ -2,7 +2,7 @@ spring:
   application:
     name : user-registration-service
   cloud:
-    config: 
+    config:
       uri: http://spring-cloud-config-server:8888
 
 #spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration

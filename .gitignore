@@ -3,3 +3,6 @@
 .gitignore
 .dockerignore
 
+.settings
+.project
+.classpath

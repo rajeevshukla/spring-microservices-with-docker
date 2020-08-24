@@ -3,9 +3,11 @@ package com.email.service.listener;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.email.service.sender.UserEmailSenderService;
 
+@Component
 public class UserEventListener {
 
 	@Autowired

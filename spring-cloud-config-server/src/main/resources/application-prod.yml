@@ -1,0 +1,29 @@
+spring:
+   application:
+      name: spring-cloud-config-server
+   cloud:
+      config:
+         server:
+            git:
+              uri: https://github.com/rajeevshukla/spring-cloud-config-props
+   rabbitmq:
+      host: rabbitmq 
+      username: guest
+      password: guest
+              
+server:
+   port: 8888
+
+
+#spring.cloud.config.server.git.uri=https://github.com/rajeevshukla/spring-cloud-config-props
+#spring.cloud.config.server.git.uri=file:///home/rajeev/git/git-localconfig-repo/spring-cloud-config-props
+#http://root:s3cr3t@REMOTE_IP:8888/monitor  To check
+
+
+eureka:
+  client:
+    serviceUrl:
+     defaultZone: http://netflix-eureka-naming-server:8761/eureka/
+  instance:
+    instanceId: ${spring.application.name}:${random.int[8000,8900]}
+    preferIpAddress: true 

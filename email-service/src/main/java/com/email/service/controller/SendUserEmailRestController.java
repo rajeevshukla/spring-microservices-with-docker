@@ -17,7 +17,7 @@ public class SendUserEmailRestController {
 	public boolean sendUserEmail(@RequestBody String userJson) {
 		boolean status = false;
 		log.info("Inside send user Reg Email===========");
-		System.out.println("Request Recieved to send email:(Rest Contoller or Fiegn client)" + userJson);
+		log.info("Request Recieved to send email:(Rest Contoller or Fiegn client)" + userJson);
 		return status;
 	}
 	
