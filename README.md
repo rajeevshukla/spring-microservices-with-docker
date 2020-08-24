@@ -19,4 +19,13 @@ This project is a demo project designed and developed using spring framework and
  
 # How to run this project on your machine ? 
  Follow Below Steps to run it in docker environmetn using docker-swarm 
- Check out this project using git clone #repo UrL 
+ Check out this project using git clone #repo URL
+ 1. `$git clone https://github.com/rajeevshukla/spring-microservices-with-docker.git` 
+2. `cd spring-microservices-with-docker`
+3. `#docker  stack deploy --compose-file docker-compose-swarm.yml mystack` and enter. 
+
+This will spawn up all the services and deploy it on all connected node.  
+
+# Architecture 
+
+
