@@ -1,6 +1,6 @@
 spring:  application:    name: spring-cloud-config-server  cloud:    config:      server:        git:          uri: https://github.com/rajeevshukla/spring-cloud-config-props  rabbitmq:    host: localhost    port: 5672    username: guest    password: guest
 
 server:  port: 8888
-  
+management:  security:    enabled: false  endpoints:    web:      exposure:        include:        - "*"   
 
 #http://root:s3cr3t@REMOTE_IP:8888/monitor  To check 
