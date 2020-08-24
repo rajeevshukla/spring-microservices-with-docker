@@ -8,7 +8,7 @@ import com.microservices.user.service.proxy.EmailServiceProxy;
 
 import feign.FeignException;
 
-@Component
+
 public class EmailServiceProxyFallback implements EmailServiceProxy {
 
 	private static final Logger log = LoggerFactory.getLogger(EmailServiceProxyFallback.class);
