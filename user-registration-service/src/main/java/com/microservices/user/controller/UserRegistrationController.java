@@ -41,6 +41,7 @@ public class UserRegistrationController {
 	@PostMapping("registerUser.htm")
 	public String registerUser(@RequestBody UserDetails userDetails) { 
 			
+		 log.info("Request received to save User:"+userDetails);
 		 registrationService.saveUserDetail(userDetails);
 		 		
 		 rabbitTemplate.convertAndSend("user-registrations","user.created", userDetails);

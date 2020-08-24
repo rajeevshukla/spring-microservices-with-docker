@@ -2,10 +2,10 @@ spring:
    application:
       name: spring-cloud-config-server
    cloud:
-      config:
-         server:
-            git:
-              uri: https://github.com/rajeevshukla/spring-cloud-config-props
+    config:
+      server:
+        git:
+          uri: https://github.com/rajeevshukla/spring-cloud-config-props
    rabbitmq:
       host: rabbitmq 
       username: guest
@@ -18,7 +18,6 @@ server:
 #spring.cloud.config.server.git.uri=https://github.com/rajeevshukla/spring-cloud-config-props
 #spring.cloud.config.server.git.uri=file:///home/rajeev/git/git-localconfig-repo/spring-cloud-config-props
 #http://root:s3cr3t@REMOTE_IP:8888/monitor  To check
-
 
 eureka:
   client:
