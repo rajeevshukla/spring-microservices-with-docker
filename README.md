@@ -29,4 +29,4 @@ This will spawn up all the services and deploy it on all connected node.
 
 # Architecture 
 
-
+![Architecture image](https://github.com/rajeevshukla/spring-microservices-with-docker/blob/master/Architecture.png)
