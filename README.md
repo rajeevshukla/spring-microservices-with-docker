@@ -37,6 +37,12 @@ This will spawn up all the services and deploy it on all connected node.
 
 ![Architecture image](https://github.com/rajeevshukla/spring-microservices-with-docker/blob/master/Architecture.png)
 
+
+# Container Ordering Challenge
+
+When you try to spawn up entire microservice infrastrucure (usually we don't do that in production)  and deploy all services using single command what we are doing it creates problem to maintain the container order. You don't know if you java based service will started first or database on which your java service dependent. To fix that problem we are using wait-for-it.sh which pings dependent container and  if that dependent container is up then it starts conatiner initialization otherwise it halts for a moment untill the dependent is not up.  Please check docker-compose.yml file where wait-for-it.sh is being pass in the entry-point. 
+
+
 # Container Monitoring
 
 Monitoring is one of the cross cutting concern that every microservice infra structure has to handle. There are various container monitoring tools available in the market. One of the best open source monitoring tool is **Prometheous**.
