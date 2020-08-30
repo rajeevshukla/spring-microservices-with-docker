@@ -1,0 +1,21 @@
+server:
+  port: 8889
+spring:
+  application:
+    name: spring-cloud-gateway-server
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+  sleuth:
+    sampler:
+      probability: 1
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://netflix-eureka-naming-server:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${random.int[5000,6000]}
+    preferIpAddress: true
+    prefer-ip-address: true

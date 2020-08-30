@@ -56,6 +56,7 @@
 		<module>email-service</module>
 		<module>user-registration-service</module>
 		<module>spring-cloud-config-server</module>
+		<module>spring-cloud-gateway-server</module>
 		<module>netflix-eureka-naming-server</module>
 		<module>netflix-cloud-zuul-server</module>
 		<module>auth-service</module>
