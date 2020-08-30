@@ -21,7 +21,6 @@ public interface EmailServiceProxy {
 */
 
 @FeignClient(name="netflix-cloud-zuul-server") //adding api gateway server for routing request through api getway to email service 
-@RibbonClient(name="email-service")
 public interface EmailServiceProxy {
 
 	//@PostMapping("sendUserRegEmail.htm")
