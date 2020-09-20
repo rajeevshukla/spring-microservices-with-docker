@@ -6,3 +6,17 @@
 .settings
 .project
 .classpath
+.idea
+*.class
+*.iml
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
+*/classes/**.class
+*/target/**
+
