@@ -1,24 +1,25 @@
 # my global config
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  scrape_interval:     5s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 5s # Evaluate rules every 15 seconds. The default is every 1 minute.
   # scrape_timeout is set to the global default (10s).
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
-  external_labels:
-    monitor: 'codelab-monitor'
+ # external_labels:
+    #monitor: 'spring-microservices-monitor'
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
-rule_files:
+#rule_files:
 # - "first.rules"
 # - "second.rules"
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: 'node-exporter'
+  - job_name: 'monitor-microservices-apps'
+    metrics_path: '/actuator/prometheus'
     static_configs:
       # the targets listed here must match the service names from the docker-compose file
-      - targets: ['manager-001:9100','worker-001:9100']
-  - job_name: 'cadvisor'
-    static_configs:
-      # the targets listed here must match the service names from the docker-compose file
-      - targets: ['docker-manager-001:8080','docker-worker-001:8080']
+      - targets: ['spring-cloud-config-server:8888','netflix-eureka-naming-server:8761','spring-boot-email:8089','spring-boot-user-registration:8080','netflix-cloud-zuul-server:8889']
+#  - job_name: 'cadvisor'
+#    static_configs:
+#      # the targets listed here must match the service names from the docker-compose file
+#      - targets: ['docker-manager-001:8080','docker-worker-001:8080']

@@ -73,4 +73,6 @@ We also need [**cAdviser**](https://github.com/google/cadvisor) which will analy
 | Zipkin Server            	| 9411  	|                	|
 | RabbitMQ                 	| 15672 	| guest/guest    	|
 | MySQL                    	| 3306  	| root/password  	|
+| Prometheus                | 9090   	|                 |
+| Grafana                   | 3000  	|  	              |
 
