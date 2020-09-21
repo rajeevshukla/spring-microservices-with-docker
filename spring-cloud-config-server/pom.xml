@@ -29,7 +29,7 @@
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
-		<!-- Adding below dependency for monitoring -->
+		<!-- Adding below 2 dependencies for monitoring  and sending events over Rabbit MQ in case of any property changes-->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-monitor</artifactId>
