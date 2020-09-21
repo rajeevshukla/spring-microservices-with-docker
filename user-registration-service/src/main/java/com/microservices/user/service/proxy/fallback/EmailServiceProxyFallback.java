@@ -26,4 +26,13 @@ public class EmailServiceProxyFallback implements EmailServiceProxy {
 		
 		return false;
 	}
+
+	@Override
+	public String pingEmailService() {
+		log.error("Fallback request recieved ! Just logging this request and returning  custom message.");
+		if(this.cause instanceof FeignException) {
+			log.error("Error in calling pingEmailService Proxy response status :{}",((FeignException)cause).status());
+		}
+		return "Fall back factory called for testing because request to the email service is failing.";
+	}
 }
