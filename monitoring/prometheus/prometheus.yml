@@ -17,14 +17,7 @@ scrape_configs:
   - job_name: 'spring-cloud-config-server'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      # the targets listed here must match the service names from the docker-compose file
       - targets: ['spring-cloud-config-server:8888']
-  - job_name: 'netflix-eureka-naming-server'
-      metrics_path: '/actuator/prometheus'
-      static_configs:
-        # the targets listed here must match the service names from the docker-compose file
-        - targets: ['netflix-eureka-naming-server:8761']
-#  - job_name: 'cadvisor'
 #    static_configs:
 #      # the targets listed here must match the service names from the docker-compose file
 #      - targets: ['docker-manager-001:8080','docker-worker-001:8080']
