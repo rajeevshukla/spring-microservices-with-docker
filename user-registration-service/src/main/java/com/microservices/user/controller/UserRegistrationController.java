@@ -19,8 +19,6 @@ import com.microservices.user.service.proxy.EmailServiceProxy;
 @RefreshScope
 public class UserRegistrationController {
 
-	
-	
 	private static final Logger log = LoggerFactory.getLogger(UserRegistrationController.class);
 
 	

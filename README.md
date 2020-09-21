@@ -55,3 +55,22 @@ We also need [**cAdviser**](https://github.com/google/cadvisor) which will analy
  So we will using this monitoring tool in below flow-  
 
 **cAdvisor --> Prometheus -->  Grafana**
+
+
+## Useful Links
+
+* [External Config Repository](https://github.com/rajeevshukla/spring-cloud-config-props)
+
+## Ports
+
+| Service Name             	| Port  	| Addtional Info 	|
+|--------------------------	|-------	|----------------	|
+| Cloud Config Server      	| 8888  	|                	|
+| User Service             	| 8080  	|                	|
+| Email Service            	| 8089  	|                	|
+| Eureka Discovery Service 	| 8762  	|                	|
+| Zuul API Gateway         	| 8889  	|                	|
+| Zipkin Server            	| 9411  	|                	|
+| RabbitMQ                 	| 15672 	| guest/guest    	|
+| MySQL                    	| 3306  	| root/password  	|
+
