@@ -14,11 +14,16 @@ global:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: 'monitor-microservices-apps'
+  - job_name: 'spring-cloud-config-server'
     metrics_path: '/actuator/prometheus'
     static_configs:
       # the targets listed here must match the service names from the docker-compose file
-      - targets: ['spring-cloud-config-server:8888','netflix-eureka-naming-server:8761','spring-boot-email:8089','spring-boot-user-registration:8080','netflix-cloud-zuul-server:8889']
+      - targets: ['spring-cloud-config-server:8888']
+  - job_name: 'netflix-eureka-naming-server'
+      metrics_path: '/actuator/prometheus'
+      static_configs:
+        # the targets listed here must match the service names from the docker-compose file
+        - targets: ['netflix-eureka-naming-server:8761']
 #  - job_name: 'cadvisor'
 #    static_configs:
 #      # the targets listed here must match the service names from the docker-compose file
