@@ -12,10 +12,10 @@ This project is a demo project designed and developed using spring framework and
 - Spring Fiegn
 - Spring Ribbon [Maintenance mode]
 - Netflix Eureka
-- Circuit Breaker Pattern (Hystrix)  [Maintenance mode]
-- Netflix Zuul <br>
-- Spring Sleuth<br>
-- Spring Boot 2.0 <br>
+- Circuit Breaker Pattern using Hystrix [Maintenance mode]
+- Netflix Zuul  [Maintenance mode]
+- Spring Sleuth
+- Spring Boot 2.0 
 - Rabbit MQ 3.2
 - MySQL 5.6
 - Spring Data JPA 
