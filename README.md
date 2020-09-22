@@ -30,8 +30,10 @@ Make sure that you have installed docker on your machine and docker swarm is up 
  1. Checkout the project using command  `# git clone https://github.com/rajeevshukla/spring-microservices-with-docker.git`
  2. Navigate inside it `# cd spring-microservices-with-docker`
  3. Deploy it on docker-swarm cluster `# docker  stack deploy --compose-file docker-compose-swarm.yml mystack` and enter. 
-
+ 4. Scale up the service? `# docker service scale <serviceid>=<noOfServices>`
 This will spawn up all the services and deploy it on all connected node.  
+  
+
 
 # Architecture 
 
