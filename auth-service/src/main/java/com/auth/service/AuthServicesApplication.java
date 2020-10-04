@@ -13,7 +13,7 @@ public class AuthServicesApplication implements CommandLineRunner {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(AuthServicesApplication.class, args); 
-		System.out.println(" === Email service is up and running.. ======");
+		System.out.println(" === Auth Service Is Up.. ======");
 	}
 	
 	@Override
