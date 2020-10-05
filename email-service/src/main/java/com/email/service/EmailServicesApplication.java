@@ -7,7 +7,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-
 public class EmailServicesApplication implements CommandLineRunner {
      
 	public static void main(String[] args) {

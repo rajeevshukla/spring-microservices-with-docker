@@ -109,10 +109,4 @@ public class RabbitMqConfig {
 	}
 	 */	
 
-
-	@Bean
-	public UserEventListener userEventListener() { 
-		return new UserEventListener();
-	}
-
 }
