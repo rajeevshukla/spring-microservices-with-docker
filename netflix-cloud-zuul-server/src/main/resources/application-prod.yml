@@ -9,6 +9,8 @@ spring:
   sleuth:
     sampler:
       probability: 1
+  main:
+    allow-bean-definition-overriding: true
 server:
   port: 8889
   cloud:
@@ -37,5 +39,8 @@ management:
 
 
 # with this you can call any user-registration service URL with just passing localhost:8889/users/whetever you have on user-registration controller. 
-#zuul.routes.user-registration-service.path=/users/*
-#zuul.routes.user-registration-service.location=user-registration-service
+zuul:
+  routes:
+    user-registration-service:
+      path: /users/*
+      location: user-registration-service

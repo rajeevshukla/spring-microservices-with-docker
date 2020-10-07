@@ -33,9 +33,11 @@ services:
       - MYSQL_DATABASE=user_db
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
-    volumes: 
-    - /root:/var/lib/mysql
-    
+      - MYSQL_ROOT_HOST=%
+    volumes: # system dependent path Plz change
+       - /home/osbox/mysql:/var/lib/mysql
+
+
  spring-boot-email:
       image: rajeevshukla/email-service
       depends_on: 
