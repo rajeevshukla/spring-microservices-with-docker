@@ -16,6 +16,5 @@ private static final String FACEBOOK_GRAPH_BASE_URL="https://graph.facebook.com/
 		System.out.println("Fetching facebook profile details");
 		return restTemplate.getForObject(FACEBOOK_GRAPH_BASE_URL+"/me?fields=id,email,last_name,first_name,name", FacebookProfile.class);
 	}
-	
-	
+
 }
